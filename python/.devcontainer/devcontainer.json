@@ -1,0 +1,21 @@
+{
+	"name": "Ubuntu",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		"args": { "VARIANT": "hirsute" }
+	},
+
+	"runArgs": [
+        "--cap-add=SYS_PTRACE",
+        "--security-opt", "seccomp=unconfined",
+    ],
+
+    "extensions": [
+        "ms-python.python",
+        "yzhang.markdown-all-in-one",
+        "ms-vsliveshare.vsliveshare"
+    ],
+
+	"remoteUser": "vscode"
+}
