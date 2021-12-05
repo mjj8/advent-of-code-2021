@@ -1,3 +1,4 @@
 vim
 libtinfo-dev
 haskell-platform
+haskell-stack
