@@ -1,0 +1,3 @@
+vim
+libtinfo-dev
+haskell-platform
