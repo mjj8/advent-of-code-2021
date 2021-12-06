@@ -1,4 +1,8 @@
 vim
 libtinfo-dev
+libtinfo5
+libtinfo6
+llvm-12
+libnuma-dev
 haskell-platform
 haskell-stack
