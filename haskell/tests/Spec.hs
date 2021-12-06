@@ -39,7 +39,7 @@ spec02 = do
             content <- readFile "src/input02.txt"
             let us = Day02.get_inputs (lines content)
             let res = Day02.predict (0, 0) us
-            fst res * snd res `shouldBe` 0
+            fst res * snd res `shouldBe` 2120749
 
 spec :: Spec
 spec = do
