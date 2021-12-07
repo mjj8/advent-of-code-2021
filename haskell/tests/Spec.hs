@@ -33,13 +33,23 @@ spec02 = do
         it "parta input helper" $ do
             content <- readFile "src/input02.txt"
             let ss = lines content
-            head (Day02.get_inputs (head ss:[])) `shouldBe` (read "Forward 7" :: Day02.Input)
+            head (Day02.get_inputs (head ss:[]))
+                `shouldBe` (read "Forward 7" :: Day02.Input)
 
         it "full parta" $ do
             content <- readFile "src/input02.txt"
             let us = Day02.get_inputs (lines content)
-            let res = Day02.predict (0, 0) us
-            fst res * snd res `shouldBe` 2120749
+            let res = Day02.predicta (0, 0) us
+            let (x, y) = res
+            x * y `shouldBe` 2120749
+
+        it "full partb" $ do
+            content <- readFile "src/input02.txt"
+            let us = Day02.get_inputs (lines content)
+            let res = Day02.predictb (0, 0, 0) us
+            let (x, y, _) = res
+            x * y `shouldBe` 2138382217
+
 
 spec :: Spec
 spec = do
