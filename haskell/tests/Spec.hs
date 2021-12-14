@@ -75,10 +75,49 @@ spec03 = do
             content <- readFile "src/input03.txt"
             let ss = lines content
             let g = Day03.gamma ss
-            let e = Day03.gamma2epsilon g
-            (Day03.bin2int (Day03.getbits g))
-                * (Day03.bin2int (Day03.getbits e))
-                    `shouldBe` 3959450
+            let e = Day03.epsilon ss
+            let gi = Day03.bin2int (Day03.getbits g)
+            let ei = Day03.bin2int (Day03.getbits e)
+            gi * ei `shouldBe` 3959450
+
+        it "partb oxrating" $ do
+            content <- readFile "src/input03.txt"
+            let ss = lines content
+            let ox = Day03.oxrating 0 ss
+            let oxi = Day03.bin2int (Day03.getbits ox) 
+            oxi `shouldBe` 2039
+
+        it "partb c02rating sample" $ do
+            let ss = ["00100",
+                      "11110",
+                      "10110",
+                      "10111",
+                      "10101",
+                      "01111",
+                      "00111",
+                      "11100",
+                      "10000",
+                      "11001",
+                      "00010",
+                      "01010"]
+            let c02 = Day03.c02rating 0 ss
+            (Day03.bin2int (Day03.getbits c02)) `shouldBe` 10
+
+        it "partb c02rating" $ do
+            content <- readFile "src/input03.txt"
+            let ss = lines content
+            let c02 = Day03.c02rating 0 ss
+            let c02i = Day03.bin2int (Day03.getbits c02)
+            c02i `shouldBe` 3649
+
+        it "full partb" $ do
+            content <- readFile "src/input03.txt"
+            let ss = lines content
+            let ox = Day03.oxrating 0 ss
+            let c02 = Day03.c02rating 0 ss
+            let oxint = Day03.bin2int (Day03.getbits ox)
+            let c02int = Day03.bin2int (Day03.getbits c02)
+            oxint * c02int `shouldBe` 7440311
 
 
 spec :: Spec

@@ -11,8 +11,28 @@ gamma xs = map (snd . last)
     [sort [(count v ys, v) | v <- ['0', '1']] 
         | ys <- transpose xs]
 
+epsilon :: [[Char]] -> [Char]
+epsilon = gamma2epsilon . gamma
+
 gamma2epsilon :: [Char] -> [Char]
 gamma2epsilon = map myflip 
+
+-- PART B
+
+oxrating :: Int -> [[Char]] -> [Char]
+oxrating n [x] = x
+oxrating n xs = oxrating (n + 1) ys
+    where
+        ys = [x | x <- xs, x !! n == v !! n]
+        v = gamma xs
+
+c02rating :: Int -> [[Char]] -> [Char]
+c02rating n [x] = x
+c02rating n xs = c02rating (n + 1) ys
+    where
+        ys = [x | x <- xs, x !! n == v !! n]
+        v = epsilon xs
+
 
 -- HELPERS
 count :: Eq a => a -> [a] -> Int
